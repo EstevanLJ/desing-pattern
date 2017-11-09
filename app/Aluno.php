@@ -33,6 +33,9 @@ class Aluno extends Model
             //Caso não exista, procura na base
             $aluno = parent::find($id);
 
+            //Sleep para simular uma consulta mais demorada
+            sleep(1);
+
             //Insere no cache, com a chave primária
             Cache::store('alunos')->forever($id, $aluno);
 

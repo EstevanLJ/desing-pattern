@@ -15,23 +15,16 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('app-alunos', require('./components/Alunos.vue'));
+Vue.component('app-cache', require('./components/Cache.vue'));
+
 
 const app = new Vue({
-    el: '#app'
-});
-
-
-const vmAluno = new Vue({
-    el: '#appAluno',
-    data: {
-        id: '',
-        resultado: '',
-        exibirResultado: false
-    },
-    mehtods: {
-        submit() {
-            console.log('foi');
-        }
+    el: '#app',
+    mounted() {
+        this.$on('buscou', function () {
+            console.log('recebeu buscou');
+        })
     }
-})
+});

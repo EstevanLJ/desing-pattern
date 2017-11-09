@@ -21,28 +21,13 @@
         </div>
     </div>
 
-    <div id="appAluno" class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Buscar Aluno</div>
+    <div id="app">
 
-                <div class="panel-body">
-                    <form id="formAluno" class="form-inline">
-                        <div class="form-group">
-                            <input type="text" class="form-control" v-model="id" placeholder="ID">
-                        </div>
-                        <button type="submit" class="btn btn-primary" @click="submit()">Buscar</button>
-                    </form>
+        <app-alunos></app-alunos>
 
-                    <pre v-if="exibirResultado">
-                        @{{resultado}}
-                    </pre>
+        <app-cache></app-cache>
 
-                </div>
-            </div>
-        </div>
     </div>
-
-
+    
 </div>
 @endsection
