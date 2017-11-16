@@ -10,8 +10,10 @@
                             <input type="text" class="form-control" v-model="id" placeholder="ID">
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
+                        <button v-if="carregando" class="btn btn-success" disabled>Carregando...</button>
                     </form>
                     <br>
+                    
                     <pre v-if="exibirResultado">
                         {{resultado}}
                     </pre>
@@ -28,20 +30,24 @@
             return {
                 id: '',
                 resultado: '',
-                exibirResultado: false
+                exibirResultado: false,
+                carregando: false
             }
         },
         methods: {
             submit() {
-
+                //this.exibirResultado = false;
+                this.carregando = true;
                 axios.get('/alunos/' + this.id).then((res) => {
                     this.resultado = res.data;
                     this.exibirResultado = true;
-                    this.$emit('buscou', 'oi');
-                    console.log('emitiu buscou');
+                    this.carregando = false;
+
+                    this.$root.$emit('buscou');
 
                 }).catch((err) => {
                     this.exibirResultado = false;
+                    this.carregando = false;
                     console.log(err);
                 })
             }

@@ -10,13 +10,15 @@
                             <button type="submit" class="btn btn-primary" @click="atualizar()">Atualizar</button>
                         </div>
                         <div class="col-sm-6">
-                            <button type="submit" class="btn btn-warning" @click="limpar()">Limpar</button>
+                            <button type="submit" class="btn btn-danger pull-right" @click="limpar()">Limpar</button>
                         </div>
                     </div>
                     <br>
-                    <pre v-if="exibirResultado">
-                        {{resultado}}
-                    </pre>
+                    <div v-if="exibirResultado">
+                        <b>Hits: </b>{{resultado.hits}}
+                        <br>
+                        <b>Missed: </b>{{resultado.missed}}
+                    </div>
 
                 </div>
             </div>
@@ -54,7 +56,7 @@
         mounted() {
             this.atualizar();
 
-            this.$on('buscou', function () {
+            this.$root.$on('buscou', () => {
                 console.log('recebeu buscou');
                 this.atualizar();
             })

@@ -15,6 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var bus = new Vue();
+
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('app-alunos', require('./components/Alunos.vue'));
 Vue.component('app-cache', require('./components/Cache.vue'));
@@ -22,9 +24,10 @@ Vue.component('app-cache', require('./components/Cache.vue'));
 
 const app = new Vue({
     el: '#app',
-    mounted() {
-        this.$on('buscou', function () {
-            console.log('recebeu buscou');
-        })
+    
+    methods: {
+        buscou() {
+            console.log('recebeu q buscou!');
+        }
     }
 });
