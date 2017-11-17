@@ -36,14 +36,13 @@
         },
         methods: {
             submit() {
-                //this.exibirResultado = false;
                 this.carregando = true;
                 axios.get('/alunos/' + this.id).then((res) => {
                     this.resultado = res.data;
                     this.exibirResultado = true;
                     this.carregando = false;
 
-                    this.$root.$emit('buscou');
+                    Events.$emit('buscou');
 
                 }).catch((err) => {
                     this.exibirResultado = false;
@@ -51,9 +50,6 @@
                     console.log(err);
                 })
             }
-        },
-        mounted() {
-            console.log('Component mounted.')
         }
     }
 </script>

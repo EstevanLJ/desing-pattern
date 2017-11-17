@@ -56,8 +56,7 @@
         mounted() {
             this.atualizar();
 
-            this.$root.$on('buscou', () => {
-                console.log('recebeu buscou');
+            Events.$on('buscou', () => {
                 this.atualizar();
             })
         }

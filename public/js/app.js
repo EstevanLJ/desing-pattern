@@ -1097,20 +1097,14 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var bus = new Vue();
+window.Events = new Vue();
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('app-alunos', __webpack_require__(39));
 Vue.component('app-cache', __webpack_require__(42));
 
 var app = new Vue({
-    el: '#app',
-
-    methods: {
-        buscou: function buscou() {
-            console.log('recebeu q buscou!');
-        }
-    }
+  el: '#app'
 });
 
 /***/ }),
@@ -42710,7 +42704,7 @@ var __vue_script__ = __webpack_require__(40)
 /* template */
 var __vue_template__ = __webpack_require__(41)
 /* template functional */
-var __vue_template_functional__ = false
+  var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -42794,23 +42788,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         submit: function submit() {
             var _this = this;
 
-            //this.exibirResultado = false;
             this.carregando = true;
             axios.get('/alunos/' + this.id).then(function (res) {
                 _this.resultado = res.data;
                 _this.exibirResultado = true;
                 _this.carregando = false;
 
-                _this.$root.$emit('buscou');
+                Events.$emit('buscou');
             }).catch(function (err) {
                 _this.exibirResultado = false;
                 _this.carregando = false;
                 console.log(err);
             });
         }
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
     }
 });
 
@@ -42918,7 +42908,7 @@ var __vue_script__ = __webpack_require__(43)
 /* template */
 var __vue_template__ = __webpack_require__(44)
 /* template functional */
-var __vue_template_functional__ = false
+  var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -43026,8 +43016,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         this.atualizar();
 
-        this.$root.$on('buscou', function () {
-            console.log('recebeu buscou');
+        Events.$on('buscou', function () {
             _this3.atualizar();
         });
     }

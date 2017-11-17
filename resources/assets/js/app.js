@@ -15,7 +15,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var bus = new Vue();
+window.Events = new Vue();
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('app-alunos', require('./components/Alunos.vue'));
@@ -23,11 +23,5 @@ Vue.component('app-cache', require('./components/Cache.vue'));
 
 
 const app = new Vue({
-    el: '#app',
-    
-    methods: {
-        buscou() {
-            console.log('recebeu q buscou!');
-        }
-    }
+    el: '#app'
 });
