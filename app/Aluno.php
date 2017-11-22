@@ -27,10 +27,10 @@ class Aluno extends Model
         } 
         else 
         {
-            //Caso exista, registra o hit
+            //Caso não exista, registra o miss
             event(new AlunosCacheMissed);
 
-            //Caso não exista, procura na base
+            //Procura na base
             $aluno = parent::find($id);
 
             //Sleep para simular uma consulta mais demorada
